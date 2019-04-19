@@ -1,0 +1,42 @@
+{
+	"name": "makara",
+	"version": "1.0.0",
+	"description": "Api Gateway",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Srivasthava12/Makara.git"
+	  },
+	"scripts": {
+		"test": "npm run build && mocha dist/test/**/*.test.js",
+		"coverage": "nyc npm test",
+		"build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+		"start": "npm run build && node dist/index.js",
+		"lint": "eslint --ext .js ./src"
+	},
+	"author": "Srivasthava Nunna",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^6.2.0",
+		"body-parser": "^1.18.3",
+		"express": "^4.16.4",
+		"express-boom": "^2.0.0",
+		"cors": "*",
+		"express-pino-logger": "^4.0.0",
+		"joi": "^14.3.0",
+		"request": "^2.88.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.24.0",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-register": "^6.26.0",
+		"code": "^5.2.4",
+		"eslint": "^5.14.1",
+		"mocha": "^5.2.0",
+		"nyc": "^13.3.0",
+		"rimraf": "^2.6.1",
+		"sinon": "^7.2.3"
+	}
+}
