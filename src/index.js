@@ -3,7 +3,7 @@ import Parser from 'body-parser';
 import Boom from 'express-boom';
 import cors from 'cors';
 import DotEnv from 'dotenv';
-import { Log, LogMiddleware } from './services/log';
+import { Log } from './services/log';
 
 import Router from './routes';
 
@@ -28,8 +28,6 @@ app.use(
 //express-boom
 app.use(Boom());
 
-//For Logs
-app.use(LogMiddleware);
 
 // Add The Routes
 Router.build(app);

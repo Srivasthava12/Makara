@@ -1,6 +1,12 @@
 module.exports = {
     name:"auth_users_register",
     method: "POST",
+    serviceTypes:{
+        register:{
+            name:"auth-node",
+            route:"user/register"
+        }
+    },
     workFlow: {
         start: async function (req, context) {
             let payload = {
@@ -9,12 +15,11 @@ module.exports = {
                 userName: req.body.userName,
                 password: req.body.password
             };
-            const response = await this.register(req,context, payload)
+            const response = await this.register(context, payload)
             return response
         },
-        register: async function (req,context, payload) { 
-            const serviceName = context.resolveParams(req.params) 
-            const response = await context.apiCall(serviceName, payload)
+        register: async function (context, payload) { 
+            const response = await context.apiCall("register", payload)
             return response.data
         }
     }
